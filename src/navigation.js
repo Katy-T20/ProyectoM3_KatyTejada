@@ -1,5 +1,5 @@
 
-import { router } from "./router.js";
+import { router } from "./routes.js";
 
 export function navigateTo(path) {
     history.pushState(null, "", path);
