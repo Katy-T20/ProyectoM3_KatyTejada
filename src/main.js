@@ -16,7 +16,7 @@ import { getFirstCharacterByName } from "./services/Api.js";
         const rick = await getFirstCharacterByName("rick");
         console.log("Result:", rick);
         console.log("Name:", rick.name);
-        console.log("Origen (animated):", rick.origen?.name);
+        console.log("Origin (animated):", rick.origin?.name);
     } catch (err) {
         console.log("Error:", err.message, "| code:", err.code, "| status:", err.status);
     }

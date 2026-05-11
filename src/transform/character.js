@@ -20,3 +20,4 @@ export function toCharacterProfile(rawCharacter) {
         LocationName: getLocationName(rawCharacter),
     };
 }
+
