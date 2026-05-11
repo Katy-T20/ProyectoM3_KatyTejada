@@ -5,8 +5,8 @@ import { renderCharacterCard } from "../ui/characterCard.js";
 import { getUserMessage } from "../ui/messages.js";
 
 //Local view status
-const state = { 
-    status = "idle",
+const state = {
+    status: "idle",
     profile: null,
     errorMessage: null,
     currentName: "Rick",
@@ -25,8 +25,8 @@ export function renderHome() {
                     id="characterInput"
                     type="text"
                     value="${state.currentName}"
-                    placeholder="Character's Name"
-                    arial-label="Character's Name"
+                    placeholder="Character's name"
+                    aria-label="Character's name"
                     ${state.status === "loading" ? "disabled" : ""}
                 />
                 <button class="characterForm__button" type="submit"
@@ -59,4 +59,53 @@ function renderContainer() {
     }
 
     return "";
+}
+
+//Helper to mute the status and re-render
+function setState(updates) {
+    Object.assign(state, updates);
+    renderHome();
+}
+
+//Hooks the form' listerner
+function setupHome() {
+    const $form = document.querySelector("#characterForm");
+    const $input = document.querySelector("#characterInput");
+
+    $form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const name = $input.value.trim();
+
+        if (!name) {
+            setState({
+                status: "error",
+                errorMessage: "Type a name to search.",
+            });
+            return;
+        }
+
+        setState({ currentName: name });
+        loadCharacter(name);
+    });
+}
+
+async function loadCharacter(name) {
+    setState({ status: "loading", errorMessage: null });
+
+    try {
+
+        const raw = await getFirstCharacterByName(name);
+
+        const profile = toCharacterProfile(raw);
+
+        setState({ status: "success", profile });
+        const $container = document.querySelector("#characterContainer");
+        renderCharacterCard($container, profile);
+    }   catch (err) {
+
+        setState({
+            status: "error",
+            errorMessage: getUserMessage(err),
+        });
+    }
 }

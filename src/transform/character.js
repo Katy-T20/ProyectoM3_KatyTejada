@@ -17,7 +17,7 @@ export function toCharacterProfile(rawCharacter) {
         status: status ?? "Unknown",
         image: image ?? "",
         originName: getOriginName(rawCharacter),
-        LocationName: getLocationName(rawCharacter),
+        locationName: getLocationName(rawCharacter),
     };
 }
 

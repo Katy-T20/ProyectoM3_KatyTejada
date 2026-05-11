@@ -280,7 +280,7 @@ body {
 /*Character Cards*/
 .characterCard {
     direction: flex;
-    flex-direction: column;
+    flex-direction: row;
     max-width: 32rem;
     margin: 1.5rem auto;
     background: #cfdaff;
@@ -288,13 +288,15 @@ body {
     border-radius: 1rem;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(1, 2, 45, 0.05);
+    flex-wrap: wrap;
 }
 
 .characterCard__image {
-    width: 100%;
+    width: clamp(80px, 25%, 140px);
     aspect-ratio: 1/1;
     object-fit: cover;
     background: #cfdaff;
+    flex-shrink: 0;
 }
 
 .characterCard__body {

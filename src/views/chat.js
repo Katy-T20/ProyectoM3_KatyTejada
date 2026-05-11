@@ -1,4 +1,3 @@
-
 const state = {
     messages: [
         { role: "character", text: "Hello! I am your favorite character, what would you like to chat about?" },
@@ -131,20 +130,18 @@ function scrollToBottom() {
     }
 }
 
-import { getFirstCharacterByName } from "../services/Api.js";
-
 function getCharacterReply(userText) {
-    return new Promise(async (resolve, reject) => {
-        try {
-            // Try to find a character based on user input
-            const character = await getFirstCharacterByName(userText);
-            resolve(`I found ${character.name} from Rick and Morty! Species: ${character.species}, Status: ${character.status}`);
-        } catch (error) {
-            if (error.code === "NO_RESULTS") {
-                resolve(`I couldn't find any Rick and Morty character matching "${userText}". Try a different name!`);
-            } else {
-                reject(new Error("Failed to fetch character data"));
+    return new Promise((resolve, reject) => {
+        const delay = 800 + Math.random() * 1200;
+
+        setTimeout(() => {
+
+            if (Math.random() < 0.25) {
+                reject(new Error("Network error simulated"));
+                return;
             }
-        }
+
+            resolve(`Received: "${userText}". (Simulated response, will be revised later with AI.)`);
+        }, delay);
     });
 }

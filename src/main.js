@@ -1,14 +1,13 @@
 
 import { router } from "./router.js";
 import { setupLinkInterception } from "./navigation.js";
+import { getFirstCharacterByName } from "./services/api.js";
 
 setupLinkInterception();
 
 window.addEventListener("popstate", router);
 
 router();
-
-import { getFirstCharacterByName } from "./services/Api.js";
 
 (async () => {
     console.log("Looking for Rick...");

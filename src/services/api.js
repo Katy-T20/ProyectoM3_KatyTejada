@@ -2,7 +2,7 @@
 import { fetchJson } from "./fetchJson.js";
 
 function buildCharacterUrl({ name, page = 1}) {
-    const baseUrl = "http://rickandmortyapi.com/api/character/";
+    const baseUrl = "https://rickandmortyapi.com/api/character/";
     
     const params = new URLSearchParams({
         name: name.trim(),
