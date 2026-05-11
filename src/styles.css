@@ -276,3 +276,102 @@ body {
 .message__retry:hover {
     background: #650404;
 }
+
+/*Character Cards*/
+.characterCard {
+    direction: flex;
+    flex-direction: column;
+    max-width: 32rem;
+    margin: 1.5rem auto;
+    background: #cfdaff;
+    border: 1px solid #8fa4ce;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(1, 2, 45, 0.05);
+}
+
+.characterCard__image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    background: #cfdaff;
+}
+
+.characterCard__body {
+    padding: 1rem 1.25rem;
+}
+
+.characterCard__name {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.characterCard__meta {
+    color: #374151;
+    margin-bottom: 0.75rem;
+}
+
+.characterCard__detail {
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+}
+
+@media (min-width: 640px) {
+    .characterCard {
+        flex-direction: row;
+        max-width: 40rem;
+    }
+    .characterCard__image {
+        width: 14rem;
+        aspect-ratio: auto;
+        flex-shrink: 0;
+    }
+}
+
+/*Home Status*/
+.homeStatus {
+    text-align: center;
+    padding: 1rem;
+    color: #677591;
+}
+
+.homeStatus--error {
+    color: #561313;
+    background: #b0c7f4;
+    border-radius: 0.5rem;
+    margin: 1rem;
+}
+
+
+.homeStatus--loading {
+    font-style: italic;
+    animation: typing-pulse 1.2s ease-in-out infinite;
+}
+
+/* Form to change character */
+.characterForm {
+    display: flex;
+    gap: 0.5rem;
+    max-width: 32rem;
+    margin: 0 auto 1rem;
+    padding: 0 1rem;
+}
+
+.characterForm__input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #cfdaff;
+    border-radius: 0.5rem;
+    font: inherit;
+}
+
+.characterForm__buttom {
+    padding: 0.5rem 1rem;
+    background: #111827;
+    color: #cfdaff;
+    border: 0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font: inherit;
+}

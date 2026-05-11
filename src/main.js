@@ -1,5 +1,5 @@
 
-import { router } from "./routes.js";
+import { router } from "./router.js";
 import { setupLinkInterception } from "./navigation.js";
 
 setupLinkInterception();
@@ -7,3 +7,17 @@ setupLinkInterception();
 window.addEventListener("popstate", router);
 
 router();
+
+import { getFirstCharacterByName } from "./services/Api.js";
+
+(async () => {
+    console.log("Looking for Rick...");
+    try {
+        const rick = await getFirstCharacterByName("rick");
+        console.log("Result:", rick);
+        console.log("Name:", rick.name);
+        console.log("Origen (animated):", rick.origen?.name);
+    } catch (err) {
+        console.log("Error:", err.message, "| code:", err.code, "| status:", err.status);
+    }
+})();
