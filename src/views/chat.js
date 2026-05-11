@@ -1,3 +1,5 @@
+import { getCharacterReply } from "../services/aiClient.js";
+
 const state = {
     messages: [
         { role: "character", text: "Hello! I am your favorite character, what would you like to chat about?" },
@@ -96,19 +98,19 @@ function setupChat() {
 }
 //New Function, 2nd parameter isRetry
 async function sendMessage(text, isRetry = false) {
-    if (!isRetry) {
-        setState({
-            messages: [ ...state.messages, { role: "user", text }],
-            status: "loading",
-            error: null,
-            lastUserMessage: text,
-        });
-    } else {
-        setState({ status: "loading", error: null });
-    }
+    const nextMessages = isRetry
+        ? state.messages
+        : [ ... state.messages, { role: 'user', text }];
+
+    setState({
+        messages: nextMessages,
+        status: 'loading',
+        error: null,
+        lastUserMessage: isRetry ? state.lastUserMessage : text,
+    });
 
     try {
-        const reply = await getCharacterReply(text);
+        const reply = await getCharacterReply(nextMessages);
         setState({
             messages: [ ...state.messages, { role: "character", text: reply }],
             status: "idle",
@@ -128,20 +130,4 @@ function scrollToBottom() {
     if ($messages) {
         $messages.scrollTop = $messages.scrollHeight;
     }
-}
-
-function getCharacterReply(userText) {
-    return new Promise((resolve, reject) => {
-        const delay = 800 + Math.random() * 1200;
-
-        setTimeout(() => {
-
-            if (Math.random() < 0.25) {
-                reject(new Error("Network error simulated"));
-                return;
-            }
-
-            resolve(`Received: "${userText}". (Simulated response, will be revised later with AI.)`);
-        }, delay);
-    });
 }

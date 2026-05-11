@@ -10,12 +10,12 @@ window.addEventListener("popstate", router);
 router();
 
 (async () => {
-    console.log("Looking for Rick...");
+    console.log("Looking for Bugs_Bunny...");
     try {
-        const rick = await getFirstCharacterByName("rick");
-        console.log("Result:", rick);
-        console.log("Name:", rick.name);
-        console.log("Origin (animated):", rick.origin?.name);
+        const Bugs_Bunny = await getFirstCharacterByName("Bugs_Bunny");
+        console.log("Result:", Bugs_Bunny);
+        console.log("Name:", Bugs_Bunny.name);
+        console.log("Origin (animated):", Bugs_Bunny.origin?.name);
     } catch (err) {
         console.log("Error:", err.message, "| code:", err.code, "| status:", err.status);
     }
