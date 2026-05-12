@@ -1,0 +1,24 @@
+{
+  "name": "proyectom3_katytejada",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Katy-T20/ProyectoM3_KatyTejada.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Katy-T20/ProyectoM3_KatyTejada/issues"
+  },
+  "homepage": "https://github.com/Katy-T20/ProyectoM3_KatyTejada#readme",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1"
+  }
+}
