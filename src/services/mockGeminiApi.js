@@ -57,7 +57,6 @@ export function send(payload) {
                 reject(buildRateLimitError());
                 return;
             }
-
             const inputTokens = estimateInputTokens(payload);
             const reply = pickReply();
             resolve(buildOkResponse(reply, inputTokens));

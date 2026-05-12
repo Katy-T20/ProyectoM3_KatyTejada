@@ -8,6 +8,11 @@ export function getUserMessage(error) {
     if (error?.status === 404) {
         return "The character you're looking for does not exist.";
     }
+
+    if (error?.status == 429) {
+        return "AI is saturated. Try again in a  minute";
+    }
+
     if (error?.status >= 500) {
         return "The API is having some issues. Try again in a few minutes.";
     }

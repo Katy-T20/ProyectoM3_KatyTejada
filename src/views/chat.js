@@ -1,4 +1,6 @@
 import { getCharacterReply } from "../services/aiClient.js";
+import { debounce, wait } from "../services/debounce.js";
+import { getUserMessage } from "../ui/messages.js";
 
 const state = {
     messages: [
@@ -7,6 +9,7 @@ const state = {
     status: "idle",
     error: null,
     lastUserMessage: null,
+    retryCountdown: null,
 };
 
 export function renderChat() {
@@ -49,6 +52,14 @@ function renderMessages() {
 }
 
 function renderStatus() {
+    if (state.status === "loading" && state.retryCountdown !== null) {
+        return `
+        <div class="message message--character message--typing">
+        Waiting to retry (${state.retryCountdown} seconds)...
+        </div>
+        `;
+    }
+
     if (state.status === "loading") {
         return `<div class="message message--character message--typing">Typing...</div>`;
     }
@@ -79,13 +90,20 @@ function setupChat() {
     const $input = document.querySelector("#chatInput");
     const $retry = document.querySelector("#retryBtn");
 
-    $form.addEventListener("submit", async (event) => {
-        event.preventDefault();
+    const debouncedSend = debounce(async () => {
+        if (state.status === "loading") return;
+
         const text = $input.value.trim();
         if (!text) return;
 
         await sendMessage(text);
         $input.value = "";
+    }, 200);
+
+    $form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        debouncedSend();
     });
 
     $retry?.addEventListener("click", () => {
@@ -98,14 +116,13 @@ function setupChat() {
 }
 //New Function, 2nd parameter isRetry
 async function sendMessage(text, isRetry = false) {
-    const nextMessages = isRetry
-        ? state.messages
-        : [ ... state.messages, { role: 'user', text }];
+    const nextMessages = isRetry ? state.messages : [ ... state.messages, { role: "user", text }];
 
     setState({
         messages: nextMessages,
-        status: 'loading',
+        status: "loading",
         error: null,
+        retryCountdown: null, 
         lastUserMessage: isRetry ? state.lastUserMessage : text,
     });
 
@@ -117,10 +134,37 @@ async function sendMessage(text, isRetry = false) {
             error: null,
             lastUserMessage: null,
         });
-    } catch (err) {
+        } catch (err) {
+            
+        if (err.status === 429) {
+            const seconds = err.retryAfterSeconds ?? 5;
+
+            for (let s = seconds; s > 0; s--) {
+                setState({ status: "laoding", retryCountdown: s});
+                await wait(1000);
+            }
+
+            try {
+                setState({ status: "loading", retryCountdown: null });
+                const reply = await getCharacterReply(nextMessages);
+                setState({
+                    messages: [ ... nextMessages, { role: "character", text: reply }],
+                    status: "idle",
+                    error: null,
+                    lastUserMessage: null,
+                });
+                return;
+            } catch (errRetry) {
+                setState({
+                    status: "error",
+                    error: getUserMessage(errRetry),
+                });
+                return;
+            }
+        }
         setState({
             status: "error",
-            error: "Opps, I couldn't respond!",
+            error: getUserMessage(err),
         });
     }
 } 
