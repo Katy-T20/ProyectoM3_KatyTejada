@@ -1,5 +1,5 @@
 
-import { getFirstCharacterByName } from "../services/api.js";
+import { getFirstCharacterByName, getAllCharacters } from "../services/api.js";
 import { toCharacterProfile } from "../transform/character.js";
 import { renderCharacterCard } from "../ui/characterCard.js";
 import { getUserMessage } from "../ui/messages.js";
@@ -19,21 +19,17 @@ export function renderHome() {
             <h1>Chat with your favorite Character!</h1>
             <p>A friendly experience with iconic and funny characters</p>
             
-            <form class="characterForm" id="characterForm">
-                <input
-                    class="characterForm__input"
-                    id="characterInput"
-                    type="text"
-                    value="${state.currentName}"
-                    placeholder="Character's name"
-                    aria-label="Character's name"
-                    ${state.status === "loading" ? "disabled" : ""}
-                />
-                <button class="characterForm__button" type="submit"
-                        ${state.status === "loading" ? "disabled" : ""}>
-                    Change Character
-                </button>
-            </form>
+            <div class="characterSelector">
+                ${getAllCharacters()
+                    .map(char => `
+                        <button class="characterSelector__button ${state.currentName === char.name ? "characterSelector__button--active" : ""}" 
+                                data-character="${char.name}"
+                                ${state.status === "loading" ? "disabled" : ""}>
+                            ${char.name}
+                        </button>
+                    `)
+                    .join("")}
+            </div>
 
             <div id="characterContainer">${renderContainer()}</div>
 
@@ -67,25 +63,18 @@ function setState(updates) {
     renderHome();
 }
 
-//Hooks the form' listerner
+//Hooks the character selector buttons
 function setupHome() {
-    const $form = document.querySelector("#characterForm");
-    const $input = document.querySelector("#characterInput");
-
-    $form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const name = $input.value.trim();
-
-        if (!name) {
-            setState({
-                status: "error",
-                errorMessage: "Type a name to search.",
-            });
-            return;
-        }
-
-        setState({ currentName: name });
-        loadCharacter(name);
+    const buttons = document.querySelectorAll(".characterSelector__button");
+    
+    buttons.forEach(button => {
+        button.addEventListener("click", (event) => {
+            event.preventDefault();
+            const characterName = button.getAttribute("data-character");
+            
+            setState({ currentName: characterName });
+            loadCharacter(characterName);
+        });
     });
 }
 
@@ -97,8 +86,11 @@ async function loadCharacter(name) {
         const raw = await getFirstCharacterByName(name);
 
         const profile = toCharacterProfile(raw);
+        applyThemeForCharacter(profile.name);
 
         setState({ status: "success", profile });
+        localStorage.setItem("lastCharacterName", profile.name);
+        localStorage.setItem("selectedCharacter", profile.name);
         const $container = document.querySelector("#characterContainer");
         renderCharacterCard($container, profile);
     }   catch (err) {
@@ -107,5 +99,27 @@ async function loadCharacter(name) {
             status: "error",
             errorMessage: getUserMessage(err),
         });
+    }
+}
+
+/*THEME HANDLER (Bugs → Comic, Rocket → Neon)*/
+
+function applyThemeForCharacter(name) {
+    const lower = name.toLowerCase();
+
+    // Limpia clases anteriores
+    document.body.classList.remove("theme-bugs", "theme-rocket", "theme-transition", "theme-portal");
+
+    // Activa animación
+    document.body.classList.add("theme-transition", "theme-portal");
+
+    if (lower.includes("bugs") || lower.includes("bunny")) {
+        document.body.classList.add("theme-bugs");
+        return;
+    }
+
+    if (lower.includes("rocket") || lower.includes("raccoon")) {
+        document.body.classList.add("theme-rocket");
+        return;
     }
 }

@@ -16,6 +16,7 @@ export function renderChat() {
     const $app = document.querySelector("#app");
 
     $app.innerHTML = `
+    applyThemeFromLastCharacter();
         <div class="chatApp">
             <header class="chatHeader">
                 <h1 class="chatHeader__title">Chat</h1>
@@ -173,5 +174,27 @@ function scrollToBottom() {
     const $messages = document.querySelector("#chatMessages");
     if ($messages) {
         $messages.scrollTop = $messages.scrollHeight;
+    }
+}
+
+/*   THEME HANDLER (Chat view)*/
+
+function applyThemeFromLastCharacter() {
+    const last = localStorage.getItem("lastCharacterName");
+    if (!last) return;
+
+    const lower = last.toLowerCase();
+
+    document.body.classList.remove("theme-bugs", "theme-rocket", "theme-transition", "theme-portal");
+    document.body.classList.add("theme-transition", "theme-portal");
+
+    if (lower.includes("bugs") || lower.includes("bunny")) {
+        document.body.classList.add("theme-bugs");
+        return;
+    }
+
+    if (lower.includes("rocket") || lower.includes("raccoon")) {
+        document.body.classList.add("theme-rocket");
+        return;
     }
 }

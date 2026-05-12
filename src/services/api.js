@@ -20,6 +20,10 @@ const characters = [
     },
 ];
 
+export function getAllCharacters() {
+    return characters;
+}
+
 function normalizeName(name) {
     return name?.toString()?.trim().toLowerCase().replace(/[_\s]+/g, " ");
 }

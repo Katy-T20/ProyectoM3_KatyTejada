@@ -1,6 +1,4 @@
-/* ============================================================
-   VARIABLES BASE (tema oscuro atmosférico)
-   ============================================================ */
+/* VARIABLES BASE */
 
 :root {
     --bg-main: radial-gradient(circle at top, #0f172a, #0a0f1f 60%, #05070d);
@@ -20,9 +18,7 @@
     --accent-strong: #38bdf8;
 }
 
-/* ============================================================
-   TEMA: BUGS BUNNY (CÓMIC)
-   ============================================================ */
+/* TEMA: BUGS BUNNY (CÓMIC) */
 
 body.theme-bugs {
     --accent: #ffcf4d;
@@ -41,9 +37,7 @@ body.theme-bugs .message--character {
     box-shadow: 0 0 0 2px rgba(0,0,0,0.4);
 }
 
-/* ============================================================
-   TEMA: ROCKET RACCOON (NEÓN)
-   ============================================================ */
+/* TEMA: ROCKET RACCOON (NEÓN)*/
 
 body.theme-rocket {
     --accent: #ff6a1a;
@@ -63,9 +57,7 @@ body.theme-rocket .message--character {
     box-shadow: 0 0 12px rgba(255, 60, 0, 0.25);
 }
 
-/* ============================================================
-   RESET
-   ============================================================ */
+/* RESET*/
 
 *,
 *::before,
@@ -86,9 +78,7 @@ body {
     transition: background 0.6s ease, color 0.4s ease;
 }
 
-/* ============================================================
-   NAV
-   ============================================================ */
+/* NAV */
 
 .mainNav {
     display: flex;
@@ -112,9 +102,7 @@ body {
     background: rgba(255, 255, 255, 0.08);
 }
 
-/* ============================================================
-   CHAT APP
-   ============================================================ */
+/* CHAT APP */
 
 .chatApp {
     display: flex;
@@ -217,9 +205,7 @@ body {
     background: var(--accent);
 }
 
-/* ============================================================
-   CHARACTER CARDS
-   ============================================================ */
+/* CHARACTER CARDS */
 
 .characterCard {
     display: flex;
@@ -265,9 +251,7 @@ body {
     font-size: 0.95rem;
 }
 
-/* ============================================================
-   HOME / ABOUT
-   ============================================================ */
+/* HOME / ABOUT */
 
 .view {
     padding: 2rem 1rem;
@@ -304,9 +288,47 @@ body {
     background: var(--accent);
 }
 
-/* ============================================================
-   STATUS & ERROR
-   ============================================================ */
+/* CHARACTER SELECTOR */
+
+.characterSelector {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem auto;
+    flex-wrap: wrap;
+}
+
+.characterSelector__button {
+    padding: 0.85rem 1.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid var(--glass-border);
+    border-radius: 0.75rem;
+    color: var(--text-main);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    backdrop-filter: blur(10px);
+}
+
+.characterSelector__button:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.characterSelector__button--active {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+    color: #0a0f1f;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.characterSelector__button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* STATUS & ERROR */
 
 .message--typing {
     font-style: italic;
@@ -344,9 +366,7 @@ body {
     background: #ff2d2d;
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+/*RESPONSIVE*/ 
 
 @media (min-width: 768px) {
     .chatMessages { padding: 1.5rem; }
@@ -361,4 +381,63 @@ body {
         border-right: 1px solid var(--glass-border);
     }
     .message { max-width: 60%; }
+}
+
+/* EFECTO DE TRANSICIÓN ENTRE TEMAS (Portal + Fade) */
+
+body.theme-transition {
+    animation: themeFade 0.6s ease forwards;
+}
+
+@keyframes themeFade {
+    0% {
+        opacity: 0;
+        transform: scale(0.92) rotate(1deg);
+        filter: blur(6px);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.03);
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Efecto portal (círculo que se abre) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 9999;
+}
+
+body.theme-portal::before {
+    animation: portalEffect 0.6s ease-out forwards;
+}
+
+@keyframes portalEffect {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0.8;
+        box-shadow: 0 0 40px 20px var(--accent-strong);
+    }
+    70% {
+        width: 200vmax;
+        height: 200vmax;
+        opacity: 0.15;
+        box-shadow: 0 0 80px 40px var(--accent);
+    }
+    100% {
+        opacity: 0;
+    }
 }

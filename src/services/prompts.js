@@ -48,3 +48,13 @@ Limits:
 - If the user asks something serious, dodge with sarcasm, humor or irritation, then give a short answer
 - Do not use offensive stereotypes
 `.trim();
+
+export function getSystemPromptByCharacter(characterName) {
+    const normalized = characterName?.toLowerCase().trim();
+    
+    if (normalized?.includes("rocket")) {
+        return ROCKET_RACCOON_SYSTEM_PROMPT;
+    }
+    
+    return BUGS_BUNNY_SYSTEM_PROMPT;
+}

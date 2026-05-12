@@ -1,15 +1,17 @@
 
 import { fetchJson } from "./fetchJson.js";
-import { BUGS_BUNNY_SYSTEM_PROMPT } from "./prompts.js";
+import { getSystemPromptByCharacter } from "./prompts.js";
 import { buildPayload, normalizeAIResponse, getTrimmedHistory } from "../transform/chatPayload.js";
 
 const CHAT_ENDPOINT = "/api/chat";
 
 export async function getCharacterReply(uiMessages) {
     const trimmed = getTrimmedHistory(uiMessages);
+    const selectedCharacter = localStorage.getItem("selectedCharacter") || "Bugs Bunny";
+    const systemPrompt = getSystemPromptByCharacter(selectedCharacter);
 
     const payload = buildPayload({
-        systemPrompt: BUGS_BUNNY_SYSTEM_PROMPT,
+        systemPrompt: systemPrompt,
         uiMessages: trimmed,
     });
 
