@@ -82,11 +82,25 @@ body {
 
 .mainNav {
     display: flex;
+    justify-content: center;
     gap: 1rem;
-    padding: 0.75rem 1rem;
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--glass-border);
+    padding: 1rem;
+    background: transparent;
+}
+
+.mainNav__link {
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    color: var(--text-main);
+    transition: 0.25s ease;
+}
+
+.mainNav__link:hover {
+    background: rgba(255,255,255,0.18);
+    transform: translateY(-2px);
 }
 
 .mainNav__link {
@@ -382,6 +396,47 @@ body {
     }
     .message { max-width: 60%; }
 }
+
+.view--home h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: titleFadeUp 0.8s ease forwards;
+}
+
+@keyframes titleFadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.view--home p:first-of-type {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeSlide 1s ease forwards 0.2s;
+}
+
+.view--home p:nth-of-type(2) {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-muted);
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeSlide 1s ease forwards 0.35s;
+}
+
+@keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(15px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
 
 /* EFECTO DE TRANSICIÓN ENTRE TEMAS (Portal + Fade) */
 

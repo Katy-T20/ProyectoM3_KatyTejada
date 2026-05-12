@@ -16,8 +16,8 @@ export function renderHome() {
     const $app = document.querySelector("#app");
     $app.innerHTML = `
         <section class="view view--home">
-            <h1>Chat with your favorite Character!</h1>
-            <p>A friendly experience with iconic and funny characters</p>
+            <h1>HEY THERE! LET'S HAVE SOME FUN</h1>
+            <p>Have a friendly experience with these iconic and funny characters</p>
             
             <div class="characterSelector">
                 ${getAllCharacters()

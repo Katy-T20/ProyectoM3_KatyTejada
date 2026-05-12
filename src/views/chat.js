@@ -15,8 +15,9 @@ const state = {
 export function renderChat() {
     const $app = document.querySelector("#app");
 
-    $app.innerHTML = `
     applyThemeFromLastCharacter();
+
+    $app.innerHTML = `
         <div class="chatApp">
             <header class="chatHeader">
                 <h1 class="chatHeader__title">Chat</h1>
