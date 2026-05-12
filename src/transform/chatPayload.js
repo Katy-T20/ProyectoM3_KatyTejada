@@ -1,7 +1,7 @@
 
 const MODEL_NAME = "gemini-3.1-flash-lite";
 const MAX_OUTPUT_TOKENS = 75;
-const TEMPERATURE = 0.5;
+const TEMPERATURE = 0.7;
 const MAX_TURNS_HISTORY = 7;
 
 export function toApiMessages(uiMessages) {

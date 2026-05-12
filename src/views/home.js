@@ -9,7 +9,7 @@ const state = {
     status: "idle",
     profile: null,
     errorMessage: null,
-    currentName: "Bugs_Bunny",
+    currentName: "Bugs Bunny",
 };
 
 export function renderHome() {

@@ -1,7 +1,7 @@
 
 export function getUserMessage(error) {
 
-    if (error?.code === "NO RESULTS") {
+    if (error?.code === "NO_RESULTS") {
         return "I can't find that character's name. Try a different one.";
     }
 

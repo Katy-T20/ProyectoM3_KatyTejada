@@ -10,12 +10,12 @@ window.addEventListener("popstate", router);
 router();
 
 (async () => {
-    console.log("Looking for Bugs_Bunny...");
+    console.log("Looking for Bugs Bunny...");
     try {
-        const Bugs_Bunny = await getFirstCharacterByName("Bugs_Bunny");
-        console.log("Result:", Bugs_Bunny);
-        console.log("Name:", Bugs_Bunny.name);
-        console.log("Origin (animated):", Bugs_Bunny.origin?.name);
+        const bugsBunny = await getFirstCharacterByName("Bugs Bunny");
+        console.log("Result:", bugsBunny);
+        console.log("Name:", bugsBunny.name);
+        console.log("Origin (animated):", bugsBunny.origin?.name);
     } catch (err) {
         console.log("Error:", err.message, "| code:", err.code, "| status:", err.status);
     }
