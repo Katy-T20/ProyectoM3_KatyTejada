@@ -4,7 +4,7 @@ import { getUserMessage } from "../ui/messages.js";
 
 const state = {
     messages: [
-        { role: "character", text: "Hey!!! what's in your mind, what are we chat about?" },
+        { role: "character", text: "Hey!!! what's in your mind, what are we chatting about?" },
     ],
     status: "idle",
     error: null,
@@ -20,7 +20,7 @@ export function renderChat() {
     if (selectedCharacter !== state.currentCharacter) {
         state.currentCharacter = selectedCharacter;
         state.messages = [
-            { role: "character", text: "Hey!!! what's in your mind, what are we chat about?" }
+            { role: "character", text: "Hey!!! what's in your mind, what are we chatting about?" }
         ];
         state.status = "idle";
         state.error = null;
@@ -32,8 +32,8 @@ export function renderChat() {
     $app.innerHTML = `
         <div class="chatApp">
             <header class="chatHeader">
-                <h1 class="chatHeader__title">Chat</h1>
-                <p class="chatHeader__subtitle">With your favorite character</p>
+                <h1 class="chatHeader__title">CHAT</h1>
+                <p class="chatHeader__subtitle">Let's spill the tea!</p>
             </header>
 
             <main class="chatMessages" id="chatMessages" aria-live="polite">

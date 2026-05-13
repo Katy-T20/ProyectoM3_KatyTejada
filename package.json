@@ -20,5 +20,8 @@
   "homepage": "https://github.com/Katy-T20/ProyectoM3_KatyTejada#readme",
   "dependencies": {
     "@google/generative-ai": "^0.24.1"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.6"
   }
 }

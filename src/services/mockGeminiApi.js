@@ -2,7 +2,7 @@
 const CANNED_REPLIES = [
     "Ehhh, whats up, doc? crunch crunch, I can already tell this conversation is gonna be more fun than Elmer Fudd at a spelling bee.",
     "If confidence were carrots, Id be running a whole dang farm by now.",
-    "Whats up, doc? Dont worry, I am here now — the fun part of the conversation just showed up."
+    "Ehhh... Dont worry, I am here now — the fun part of the conversation just showed up."
 ];
 
 function pickReply() {

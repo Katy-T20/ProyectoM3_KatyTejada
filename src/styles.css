@@ -284,6 +284,189 @@ body {
     color: var(--text-muted);
 }
 
+/* ABOUT VIEW STYLES */
+
+.view--about {
+    max-width: 60rem;
+    padding: 0;
+}
+
+.aboutHero {
+    padding: 3rem 1rem 2rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border-bottom: 1px solid var(--glass-border);
+    text-align: center;
+}
+
+.aboutHero h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.aboutHero__subtitle {
+    color: var(--accent);
+    font-size: 1.1rem;
+    margin-bottom: 0 !important;
+}
+
+.aboutContent {
+    padding: 2rem 1rem;
+}
+
+.aboutSection {
+    margin-bottom: 2.5rem;
+    text-align: left;
+}
+
+.aboutSection h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-strong);
+    display: inline-block;
+}
+
+.aboutSection p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+}
+
+/* CHARACTER GRID */
+
+.aboutCharacters {
+    margin-bottom: 2.5rem;
+}
+
+.aboutCharacters h2 {
+    text-align: left;
+}
+
+.aboutCharGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.aboutCharCard {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    transition: var(--transition-medium);
+    text-align: center;
+}
+
+.aboutCharCard:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.aboutCharCard h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-main);
+}
+
+.aboutCharCard p {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.aboutCharCard__desc {
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-top: 0.75rem !important;
+}
+
+/* STACK GRID */
+
+.aboutStackGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.aboutStackItem {
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--glass-border);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    backdrop-filter: blur(8px);
+    transition: var(--transition-fast);
+    text-align: left;
+}
+
+.aboutStackItem:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent);
+    transform: translateX(4px);
+}
+
+.aboutStackItem__icon {
+    font-size: 1.5rem;
+}
+
+.aboutStackItem span {
+    font-size: 0.95rem;
+}
+
+/* FEATURES LIST */
+
+.aboutFeatures {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0 0;
+}
+
+.aboutFeatures li {
+    padding: 0.75rem 0;
+    color: var(--text-muted);
+    line-height: 1.6;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition-fast);
+}
+
+.aboutFeatures li:last-child {
+    border-bottom: none;
+}
+
+.aboutFeatures li:hover {
+    color: var(--accent);
+    padding-left: 0.5rem;
+}
+
+/* CTA SECTION */
+
+.aboutCTA {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+    border-radius: 1rem;
+    border: 1px solid var(--glass-border);
+}
+
+.aboutCTA p {
+    font-size: 1.2rem;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+}
+
 .btn {
     display: inline-block;
     padding: 0.75rem 1.25rem;
