@@ -4,16 +4,28 @@ import { getUserMessage } from "../ui/messages.js";
 
 const state = {
     messages: [
-        { role: "character", text: "Hello! I am your favorite character, what would you like to chat about?" },
+        { role: "character", text: "Hey!!! what's in your mind, what are we chat about?" },
     ],
     status: "idle",
     error: null,
     lastUserMessage: null,
     retryCountdown: null,
+    currentCharacter: null,
 };
 
 export function renderChat() {
     const $app = document.querySelector("#app");
+    const selectedCharacter = localStorage.getItem("selectedCharacter");
+
+    if (selectedCharacter !== state.currentCharacter) {
+        state.currentCharacter = selectedCharacter;
+        state.messages = [
+            { role: "character", text: "Hey!!! what's in your mind, what are we chat about?" }
+        ];
+        state.status = "idle";
+        state.error = null;
+        state.lastUserMessage = null;
+    }
 
     applyThemeFromLastCharacter();
 
@@ -142,7 +154,7 @@ async function sendMessage(text, isRetry = false) {
             const seconds = err.retryAfterSeconds ?? 5;
 
             for (let s = seconds; s > 0; s--) {
-                setState({ status: "laoding", retryCountdown: s});
+                setState({ status: "loading", retryCountdown: s});
                 await wait(1000);
             }
 

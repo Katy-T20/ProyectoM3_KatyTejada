@@ -1,6 +1,6 @@
 //Fetch wrapper q vaida respose.ok
-export async function fetchJson(url) {
-    const response = await fetch(url);
+export async function fetchJson(url, options = {}) {
+    const response = await fetch(url, options);
 
     if (!response.ok) {
         const err = new Error(`HTTP ${response.status}: ${response.statusText}`);

@@ -18,9 +18,9 @@ export default async function handler(req, res) {
         }
 
         //4. Initialize SDK with API key from .env
-        const genAI = new GoogleGenerativeAI(ProcessingInstruction.env.GEMINI__API_KEY);
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
         const model = genAI.getGenerativeModel({
-            model: "gemini-3.1-flash-lite",
+            model: "gemini-2.5-flash-lite",
             systemInstruction,
             generationConfig,
         });
@@ -31,6 +31,9 @@ export default async function handler(req, res) {
         //6. Return complete response with Gemini to client
         return res.status(200).json(result.response);
     }   catch (error) {
+
+        console.error("Full error:", JSON.stringify(error, null, 2));
+        console.error("Error message:", error.message); 
 
         if (error.status === 429) {
             console.warn("Rate limit hit on Gemini");
