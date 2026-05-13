@@ -65,13 +65,11 @@ describe("toApiMessages", () => {
 describe("normalizeAIResponse", () => {
     it("extracts and joins text parts from a valid API response", () => {
         const raw = {
-            candidates: [
-                {
-                    content: {
-                        parts: [{ text: "Ehh, " }, { text: "whats up doc?" }],
-                    },
+            candidates: [{
+                content: {
+                    parts: [{ text: "Ehh, " }, { text: "whats up doc?" }],
                 },
-            ],
+            }],
         };
  
         expect(normalizeAIResponse(raw)).toBe("Ehh, whats up doc?");
