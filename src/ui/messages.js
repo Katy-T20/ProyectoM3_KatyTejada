@@ -1,4 +1,3 @@
-
 export function getUserMessage(error) {
 
     if (error?.code === "NO_RESULTS") {

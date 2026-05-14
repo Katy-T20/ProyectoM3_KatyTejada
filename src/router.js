@@ -1,4 +1,3 @@
-
 import { renderHome } from "./views/home.js";
 import { renderChat } from "./views/chat.js";
 import { renderAbout } from "./views/about.js";

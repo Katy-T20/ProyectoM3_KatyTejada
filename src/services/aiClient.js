@@ -1,4 +1,3 @@
-
 import { fetchJson } from "./fetchJson.js";
 import { getSystemPromptByCharacter } from "./prompts.js";
 import { buildPayload, normalizeAIResponse, getTrimmedHistory } from "../transform/chatPayload.js";

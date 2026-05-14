@@ -1,4 +1,3 @@
-
 const MODEL_NAME = "gemini-2.5-flash-lite";
 const MAX_OUTPUT_TOKENS = 75;
 const TEMPERATURE = 0.7;

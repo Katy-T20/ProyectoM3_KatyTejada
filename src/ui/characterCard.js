@@ -1,4 +1,3 @@
-
 export function renderCharacterCard(container, profile) {
     if (!container) return;
     container.innerHTML = `
@@ -8,7 +7,7 @@ export function renderCharacterCard(container, profile) {
             alt="${profile.name}" />
         <div class="characterCard__body">
             <h2 class="characterCard__name">${profile.name}</h2>
-            <p class="characterCard__meta">${profile.status} - ${profile.species}</p>
+            <p class="characterCard__meta">${profile.status}</p>
             <p class="characterCard__detail">
                 <strong>Origin:</strong> ${profile.originName}
             </p>

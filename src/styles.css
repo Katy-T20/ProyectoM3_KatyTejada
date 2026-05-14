@@ -679,20 +679,3 @@ body.theme-portal::before {
         opacity: 0;
     }
 }
-/* RESTORE GLASS EFFECT */
-.glass,
-.mainNav__link,
-.chatHeader,
-.chatComposer,
-.characterCard,
-.aboutCharCard,
-.aboutStackItem {
-    background: rgba(255, 255, 255, 0.14) !important;
-    border: 1px solid rgba(255, 255, 255, 0.22) !important;
-    backdrop-filter: blur(18px) saturate(160%) !important;
-    -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
-
-    box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.15),
-        0 4px 24px rgba(0,0,0,0.4);
-}

@@ -1,4 +1,3 @@
-
 import { router } from "./router.js";
 import { setupLinkInterception } from "./navigation.js";
 import { getFirstCharacterByName } from "./services/api.js";

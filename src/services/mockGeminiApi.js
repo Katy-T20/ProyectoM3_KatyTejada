@@ -1,4 +1,3 @@
-
 const CANNED_REPLIES = [
     "Ehhh, whats up, doc? crunch crunch, I can already tell this conversation is gonna be more fun than Elmer Fudd at a spelling bee.",
     "If confidence were carrots, Id be running a whole dang farm by now.",
@@ -63,4 +62,3 @@ export function send(payload) {
         }, delay);
     });
 }
-

@@ -1,4 +1,3 @@
-
 function getOriginName(rawCharacter) {
     return rawCharacter.origin?.name ?? "Unknown";
 }
@@ -20,4 +19,3 @@ export function toCharacterProfile(rawCharacter) {
         locationName: getLocationName(rawCharacter),
     };
 }
-

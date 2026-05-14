@@ -2,8 +2,8 @@
 
 An interactive Single Page Application where users chat with AI‑powered iconic characters. Built with Vanilla JavaScript, powered by Google’s Gemini 2.5 Flash Lite model, and deployed on Vercel, this project delivers personality‑driven conversations with real‑time AI responses.
 
-🔗 **Vercel Live Demo**: [Character Chat SPA](https://proyecto-m3-katy-tejada-5g148p75i-katy-tejada-s-projects.vercel.app/)
-> <https://proyecto-m3-katy-tejada-5g148p75i-katy-tejada-s-projects.vercel.app/>
+🔗 **Vercel Live Demo**: [Character Chat SPA](https://proyecto-m3-katy-tejada-swart.vercel.app)
+> <https://proyecto-m3-katy-tejada-swart.vercel.app>
 ---
 ## 🎭 Characters
 
@@ -272,4 +272,3 @@ Response: AI identified that `package.json` was missing the Vitest test script. 
 **Katy Tejada** - [@Katy-T20](https://github.com/Katy-T20)
 
 **Version**: 1.0.0 | **Status**: ✅ Production Ready | **Updated**: May 2026
-
