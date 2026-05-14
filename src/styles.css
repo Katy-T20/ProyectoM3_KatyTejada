@@ -247,6 +247,7 @@ body {
 
 .characterCard__body {
     padding: 1rem 1.25rem;
+    text-align: center;
 }
 
 .characterCard__name {
