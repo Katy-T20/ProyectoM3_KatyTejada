@@ -2,8 +2,9 @@
 
 An interactive Single Page Application where users chat with AI‑powered iconic characters. Built with Vanilla JavaScript, powered by Google’s Gemini 2.5 Flash Lite model, and deployed on Vercel, this project delivers personality‑driven conversations with real‑time AI responses.
 
-🔗 Live Demo: https://proyectom3-katytejada.vercel.app
-
+🔗 **Live Demo**: [Character Chat SPA](https://proyecto-m3-katy-tejada-swart.vercel.app/)
+> <https://proyecto-m3-katy-tejada-swart.vercel.app/>
+---
 ## 🎭 Characters
 
 ### 🐰 **Bugs Bunny** (Looney Tunes)
@@ -38,9 +39,8 @@ A cybernetically enhanced raccoon from Guardians of the Galaxy. Loud, sarcastic,
 
 ---
 
-## 🚀 Quick Start
-
-### Prerequisites
+## 📋 Prerequisites
+Ensure the following are installed before getting started:
 
 ```bash
 # Check versions (should be ≥ these)
@@ -52,7 +52,7 @@ git --version       # any recent version
 Get a free API key from Google AI Studio:
 https://aistudio.google.com/
 
-### Installation (5 steps)
+### 🚀 Installation (5 steps)
 
 **1. Clone & Navigate**
 ```bash
@@ -65,7 +65,7 @@ cd ProyectoM3_KatyTejada
 npm install
 ```
 
-**3. Create .env File**
+### 3. Create the `.env` File
 ```bash
 # Windows
 New-Item .env
@@ -82,7 +82,7 @@ npm install -g vercel
 vercel dev
 ```
 
-Then open http://localhost:3000 in your browser.
+Then open <http://localhost:3000> in your browser.
 
 ---
 
@@ -99,8 +99,8 @@ npm run test:watch
 ```
 
 **Test Coverage:**
-- `app.test.js`: (API, character lookup, AI responses)
-- `utils.test.js`: (data transformations, message handling)
+- `app.test.js`: 7 Tests (API, character lookup, AI responses)
+- `utils.test.js`: 9 Tests (data transformations, message handling)
 
 ---
 
@@ -110,24 +110,26 @@ npm run test:watch
 ```bash
 npm install -g vercel
 vercel
-
-# Follow prompts, set VITE_GOOGLE_API_KEY environment variable
 ```
+Follow the prompts and set `GOOGLE_API_KEY` as an environment variable when asked.
 
-**Option 2: GitHub Integration (Automatic)**
-1. Push code to GitHub repository
-2. Go to https://vercel.com
-3. Import your repository
-4. Add GOOGLE_API_KEY in Environment Variables
-5. Deploy (auto-deploys on future pushes)
+**Option 2: GitHub Integration (Automatic Deploys)**
+1. Push the repository to GitHub
+2. Go to <https://vercel.com> and import the repository
+3. Add `GOOGLE_API_KEY` under **Settings → Environment Variables**
+4. Click **Deploy** — future pushes to `main` will auto‑deploy
 
 ---
 
 ## 📱 How to Use
 
-1. **Home Page** - Welcome screen with character selection (Image1.jpg)
-2. **Select Character** - Choose Bugs Bunny or Rocket Raccoon and click "Let's start chatting" (Image2.jpg and Image3.jpg)
-3. **Chat Interface** - Type messages and receive AI responses (Image4.jpg)
+1. **Home Page** - Welcome screen with character selection
+![Home Page](images/Image1.jpg)
+2. **Select Character** - Choose Bugs Bunny or Rocket Raccoon and click "Let's start chatting" 
+![Character Select](images/Image2.jpg)
+![Character Select 2](images/Image3.jpg)
+3. **Chat Interface** - Type messages and receive AI responses 
+![Chat Interface](images/Image4.jpg)
 4. **About Page** - Project info and technical details
 
 **Example Conversation:**
@@ -141,6 +143,7 @@ What a maroon asks that kind of question!
 ROCKET:
 *grumbles* Why do ya care about my favorite color, pal? 
 I'm more into laser blues, if you ask me.
+```
 
 ---
 
@@ -189,7 +192,6 @@ ProyectoM3_KatyTejada/
 │
 └── images/                   # Character images
 ```
-
 ---
 
 ## 🛠️ Tech Stack & Tools
@@ -232,6 +234,29 @@ ProyectoM3_KatyTejada/
 - ✅ HTTPS enforced on Vercel deployment
 
 ---
+
+## 🤖📚 AI Documentation
+
+The following log documents key prompts used with Claude AI to resolve specific challenges encountered during development.
+ 
+---
+1. Problem: The project had originally been built with Rick and Morty characters. Halfway through development, I decided to replace them with Bugs Bunny and Rocket Raccoon.
+Prompt: How can I change to a different character? 
+Response: AI helped identify and remove all character-specific references and replace them with the new characters.
+
+
+2. Problem: When switching from one character to the other, the previous character's conversation history was incorrectly continuing into the new character's chat.
+Prompt: "I have 2 different characters, but I am unable to switch between conversations, how can I solve the ussue"
+Response: AI guided changes across multiple files — `api.js`, `aiClient.js`, `prompts.js`, `home.js`, and `styles.css` — to ensure each character maintains its own isolated conversation history that resets correctly on switch.
+
+3. Problem: The About page had a very simple and plain layout that lacked visual interest.
+Prompt: "How can I make the 'About' interface more interactive and fun?"
+Response: AI suggested styling improvements and layout changes to make the About page more visually engaging and bold, including animations and a more structured design.
+
+4. Problem: Running `npm test` was failing because `package.json` was missing required configuration for Vitest.
+Prompt: "I have made tests for App and utils, but when I run the test I am having some issueswhy can this be?"
+Response: AI identified that `package.json` was missing the Vitest test script. It recommended verifying all dependencies were installed and that the configuration was correctly set up before re-running the test command.
+
 ---
 
 ## 📖 Learn More
@@ -239,13 +264,6 @@ ProyectoM3_KatyTejada/
 - [Google Generative AI Docs](https://ai.google.dev/)
 - [Vercel Documentation](https://vercel.com/docs)
 - [Vitest Testing Framework](https://vitest.dev/)
-- [GitHub Repository](https://github.com/Katy-T20/ProyectoM3_KatyTejada)
-
----
----
-
-## 🤖📚 AI Documentation
-
 
 ---
 
